@@ -5,9 +5,9 @@ Solving problem sets for CS50's Introduction to Computer Science course
 
 [CS50 on JavaRush (russian translate)](https://javarush.ru/quests/QUEST_HARVARD_CS50)
 
-[C functions reference](https://reference.cs50.net/cs50/)
-
 [CS50 cloud IDE](https://ide.cs50.io)
+
+[C functions reference](https://reference.cs50.net/cs50/)
 
 
 Work with files (.../pset1/hello/hello.c for example):
