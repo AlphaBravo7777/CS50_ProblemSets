@@ -5,7 +5,7 @@ Solving problem sets for CS50's Introduction to Computer Science course
 
 [CS50 on JavaRush (russian translate)](https://javarush.ru/quests/QUEST_HARVARD_CS50)
 
-[CS50 Problem Sets List 2015](http://cs50.tv/2015/fall/#psets)
+[CS50 Problem Sets 2015](http://cs50.tv/2015/fall/#psets)
 
 [CS50 Сloud IDE](https://ide.cs50.io)
 
