@@ -1,7 +1,7 @@
 Solving problem sets for CS50's Introduction to Computer Science course
 ===
 
-[Course on edX](https://www.edx.org/course/cs50s-introduction-computer-science-harvardx-cs50x)
+[CS50 on edX](https://www.edx.org/course/cs50s-introduction-computer-science-harvardx-cs50x)
 
 [CS50 on JavaRush (russian translate)](https://javarush.ru/quests/QUEST_HARVARD_CS50)
 
