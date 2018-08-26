@@ -7,6 +7,8 @@ Solving problem sets for CS50's Introduction to Computer Science course
 
 [CS50 cloud IDE](https://ide.cs50.io)
 
+[CS50 Docs](https://cs50.readthedocs.io/)
+
 [C functions reference](https://reference.cs50.net/cs50/)
 
 
