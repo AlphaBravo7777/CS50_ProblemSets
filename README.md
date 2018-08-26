@@ -1,9 +1,15 @@
-Solving problem sets for CS50's Introduction to Computer Science course.
+Solving problem sets for CS50's Introduction to Computer Science course
 ===
 
 [Link course](https://www.edx.org/course/cs50s-introduction-computer-science-harvardx-cs50x)
+[CS50 on JavaRush (russian translate)](https://javarush.ru/quests/QUEST_HARVARD_CS50)
+[C functions reference](https://reference.cs50.net/cs50/)
 
-Use [CS50 cloud IDE](https://ide.cs50.io) for test code
+Use [CS50 cloud IDE](https://ide.cs50.io) for test code.
+
+<http://webdesign.ru.net>
+
+http://webdesign.ru.net
 
 All problem sets code went thought:
 
