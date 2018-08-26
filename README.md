@@ -7,7 +7,7 @@ Solving problem sets for CS50's Introduction to Computer Science course
 
 [C functions reference](https://reference.cs50.net/cs50/)
 
-Use [CS50 cloud IDE](https://ide.cs50.io) for test code
+[CS50 cloud IDE](https://ide.cs50.io)
 
 
 Work with files (.../pset1/hello/hello.c for example):
