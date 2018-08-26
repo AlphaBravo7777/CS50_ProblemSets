@@ -1,8 +1,8 @@
 Solving problem sets for CS50's Introduction to Computer Science course.
 
-Link course: Link
+Link course: https://www.edx.org/course/cs50s-introduction-computer-science-harvardx-cs50x
 
-Use CS50 cloud IDE for test code Link. https://ide.cs50.io
+Use CS50 cloud IDE for test code: https://ide.cs50.io
 
 All problem sets code went thought:
 
