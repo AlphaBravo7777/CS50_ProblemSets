@@ -15,15 +15,13 @@ Work with files (.../pset1/hello.c for example):
 
 ### Prepare
 
-Run commands in console:
+`Run commands in console:`
 
-'$ cd'
-$ cd pset1
-$ mkdir hello
-$ cd hello
-$ touch hello.c
-
-### 
+    dir /fonts$ cd'
+    dir /images$ cd pset1
+    dir /js$ mkdir hello
+**$ cd hello**
+***$ touch hello.c***
 
 ### Build
 
