@@ -15,45 +15,45 @@ Work with files (.../pset1/hello.c for example):
 
 ### Prepare
 
-`Run commands in console:`
+Run commands in console:
 
-    dir /fonts$ cd'
-    dir /images$ cd pset1
-    dir /js$ mkdir hello
-**$ cd hello**
-***$ touch hello.c***
+    $ cd'
+    $ cd pset1
+    $ mkdir hello
+    $ cd hello**
+    $ touch hello.c***
 
 ### Build
 
 Run commands in console:
 
-$ cd pset1/hello
-$ make hello
+    $ cd pset1/hello
+    $ make hello
 
 ### Run
 
 Run commands in console:
 
-$ cd pset1/hello
-$ ./hello
+    $ cd pset1/hello
+    $ ./hello
 
 ### Check style
 
 Run commands in console:
 
-$ cd pset1/hello
-$ style50 hello.c
+    $ cd pset1/hello
+    $ style50 hello.c
 
 ### Test code
 
 Run commands in console:
 
-$ cd pset1/hello
-$ check50 cs50/2018/x/hello
+    $ cd pset1/hello
+    $ check50 cs50/2018/x/hello
 
 ### Submit code
 
 Run commands in console:
 
-$ cd pset1/hello
-$ submit50 cs50/2018/x/hello
+    $ cd pset1/hello
+    $ submit50 cs50/2018/x/hello
