@@ -13,16 +13,16 @@ Use [CS50 cloud IDE](https://ide.cs50.io) for test code
 (.../pset1/hello.c for example):
 ---
 
-Prepare
-###
+### Prepare
+
 
 Run commands in console:
 
-$ cd
-$ cd pset1
-$ mkdir hello
-$ cd hello
-$ touch hello.c
+$ cd 
+$ cd pset1 
+$ mkdir hello 
+$ cd hello 
+$ touch hello.c 
 
 Build
 ---
