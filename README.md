@@ -9,6 +9,8 @@ Solving problem sets for CS50's Introduction to Computer Science course
 
 [CS50 Сloud IDE](https://ide.cs50.io)
 
+[CS50 Sandbox](https://sandbox.cs50.io/)
+
 [CS50 Docs](https://cs50.readthedocs.io/)
 
 [CS50 Reference](https://reference.cs50.net/cs50/)
