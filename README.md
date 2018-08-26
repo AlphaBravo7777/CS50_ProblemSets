@@ -23,7 +23,8 @@ $ mkdir hello
 $ cd hello
 $ touch hello.c
 
-###
+### 
+
 ### Build
 
 Run commands in console:
