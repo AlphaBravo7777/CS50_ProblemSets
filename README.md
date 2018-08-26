@@ -5,7 +5,7 @@ Solving problem sets for CS50's Introduction to Computer Science course
 
 [CS50 on JavaRush (russian translate)](https://javarush.ru/quests/QUEST_HARVARD_CS50)
 
-[CS50 cloud IDE](https://ide.cs50.io)
+[CS50 Сloud IDE](https://ide.cs50.io)
 
 [CS50 Docs](https://cs50.readthedocs.io/)
 
