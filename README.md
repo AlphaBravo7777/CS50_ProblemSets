@@ -1,9 +1,5 @@
-Solving problem sets for CS50's Introduction to Computer Science course.
+h1 Solving problem sets for CS50's Introduction to Computer Science course.
 <hr>
-
-***
-
----
 
 Link course: https://www.edx.org/course/cs50s-introduction-computer-science-harvardx-cs50x
 
