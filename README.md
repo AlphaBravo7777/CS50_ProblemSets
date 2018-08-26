@@ -3,7 +3,7 @@ Solving problem sets for CS50's Introduction to Computer Science course
 
 [CS50 on edX](https://www.edx.org/course/cs50s-introduction-computer-science-harvardx-cs50x)
 
-[CS50 on JavaRush (russian translate)](https://javarush.ru/quests/QUEST_HARVARD_CS50)
+[CS50 on JavaRush (russian translation)](https://javarush.ru/quests/QUEST_HARVARD_CS50)
 
 [CS50 Problem Sets 2015](http://cs50.tv/2015/fall/#psets)
 
