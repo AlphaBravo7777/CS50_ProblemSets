@@ -1,16 +1,9 @@
 Solving problem sets for CS50's Introduction to Computer Science course.
 ===
 
-Solving problem sets for CS50's Introduction to Computer Science course.
----
+[Link course](https://www.edx.org/course/cs50s-introduction-computer-science-harvardx-cs50x)
 
-### h3 Solving problem sets for CS50's Introduction to Computer Science course.
-
-#### h4 Solving problem sets for CS50's Introduction to Computer Science course.
-
-Link course: https://www.edx.org/course/cs50s-introduction-computer-science-harvardx-cs50x
-
-Use CS50 cloud IDE for test code: https://ide.cs50.io
+Use [CS50 cloud IDE](https://ide.cs50.io) for test code
 
 All problem sets code went thought:
 
@@ -22,6 +15,8 @@ All problem sets code went thought:
 
 
 Prepare
+---
+
 Run commands in console:
 
 $ cd
