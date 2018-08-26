@@ -10,55 +10,48 @@ Solving problem sets for CS50's Introduction to Computer Science course
 Use [CS50 cloud IDE](https://ide.cs50.io) for test code
 
 
-(.../pset1/hello.c for example):
+Work with files (.../pset1/hello.c for example):
 ---
 
 ### Prepare
 
-
 Run commands in console:
-'
-$ cd
+
+'$ cd'
 $ cd pset1
 $ mkdir hello
 $ cd hello
 $ touch hello.c
-'
 
-Build
----
+### Build
 
 Run commands in console:
 
 $ cd pset1/hello
 $ make hello
 
-Run
----
+### Run
 
 Run commands in console:
 
 $ cd pset1/hello
 $ ./hello
 
-Check style
----
+### Check style
 
 Run commands in console:
 
 $ cd pset1/hello
 $ style50 hello.c
 
-Test code
----
+### Test code
 
 Run commands in console:
 
 $ cd pset1/hello
 $ check50 cs50/2018/x/hello
 
-Submit code
----
+### Submit code
 
 Run commands in console:
 
