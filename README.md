@@ -55,11 +55,11 @@ Run commands in console:
 Run commands in console:
 
     $ cd pset1/hello
-    $ check50 cs50/2018/x/hello
+    $ check50 cs50/2017/x/hello
 
 ### Submit code
 
 Run commands in console:
 
     $ cd pset1/hello
-    $ submit50 cs50/2018/x/hello
+    $ submit50 cs50/2017/x/hello
