@@ -24,6 +24,7 @@ int main(int argc, string argv[]) {
 
     int offset = 0;
     string text = get_string("Enter the text for encryption with the Vigenere cipher:\n");
+    
     for (int i = 0, textLength = strlen(text); i < textLength; i++) {
         if (!isalpha(text[i]))
             offset++;
