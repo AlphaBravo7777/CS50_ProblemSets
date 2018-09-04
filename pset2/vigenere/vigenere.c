@@ -10,16 +10,14 @@ int main(int argc, string argv[]) {
         return 1;
     }
 
-    for (int i = 0, argvLength = strlen(argv[1]); i < argvLength; i++) {
-        if (!isalpha(argv[1][i])) {
+    string key = argv[1];
+    int keyLength = strlen(key);
+
+    for (int i = 0; i < keyLength; i++) {
+        if (!isalpha(key[i])) {
             printf("The key must contain characters a-z or A-Z\n");
             return 1;
         }
-    }
-
-    string key = argv[1];
-    int keyLength = strlen(key);
-    for (int i = 0; i < keyLength; i++) {
         if (islower(key[i]))
             key[i] -= 32;
     }
