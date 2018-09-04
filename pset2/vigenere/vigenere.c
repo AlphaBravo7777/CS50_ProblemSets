@@ -24,14 +24,13 @@ int main(int argc, string argv[]) {
 
     int offset = 0;
     string text = get_string("Enter the text for encryption with the Vigenere cipher:\n");
-    
+
     for (int i = 0, textLength = strlen(text); i < textLength; i++) {
-        if (!isalpha(text[i]))
-            offset++;
         if (isupper(text[i]))
             text[i] = (text[i] + key[(i - offset) % keyLength] - 130) % 26 + 65;
-        if (islower(text[i]))
+        else if (islower(text[i]))
             text[i] = (text[i] + key[(i - offset) % keyLength] - 162) % 26 + 97;
+        else offset++;
     }
 
     printf("ciphertext: %s\n", text);
