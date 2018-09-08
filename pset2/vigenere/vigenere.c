@@ -23,10 +23,9 @@ int main(int argc, string argv[]) {
         key[i] -= 'A';
     }
 
-    int offset = 0;
     string text = get_string("Enter the text for encryption with the Vigenere cipher:\n");
 
-    for (int i = 0, textLength = strlen(text); i < textLength; i++) {
+    for (int i = 0, offset = 0, textLength = strlen(text); i < textLength; i++) {
         if (isupper(text[i]))
             text[i] = (text[i] - 'A' + key[(i - offset) % keyLength]) % 26 + 'A';
         else if (islower(text[i]))
