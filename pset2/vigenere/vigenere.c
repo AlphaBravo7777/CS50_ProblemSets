@@ -15,7 +15,7 @@ int main(int argc, string argv[]) {
 
     for (int i = 0; i < keyLength; i++) {
         if (!isalpha(key[i])) {
-            printf("The key must contain characters a-z or A-Z\n");
+            printf("The key must contain only the characters a-z or A-Z\n");
             return 1;
         }
         if (islower(key[i]))
