@@ -20,6 +20,7 @@ int main(int argc, string argv[]) {
         }
         if (islower(key[i]))
             key[i] -= 32;
+        key[i] -= 'A';
     }
 
     int offset = 0;
@@ -27,9 +28,9 @@ int main(int argc, string argv[]) {
 
     for (int i = 0, textLength = strlen(text); i < textLength; i++) {
         if (isupper(text[i]))
-            text[i] = (text[i] - 'A' + key[(i - offset) % keyLength] - 'A') % 26 + 'A';
+            text[i] = (text[i] - 'A' + key[(i - offset) % keyLength]) % 26 + 'A';
         else if (islower(text[i]))
-            text[i] = (text[i] - 'a' + key[(i - offset) % keyLength] - 'A') % 26 + 'a';
+            text[i] = (text[i] - 'a' + key[(i - offset) % keyLength]) % 26 + 'a';
         else offset++;
     }
 
