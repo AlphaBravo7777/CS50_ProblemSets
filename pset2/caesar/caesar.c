@@ -6,7 +6,7 @@
 
 int main(int argc, string argv[]) {
     if (argc != 2) {
-        printf("Print the key next time\n");
+        printf("Usage: ./caesar k\n");
         return 1;
     }
 
@@ -22,9 +22,9 @@ int main(int argc, string argv[]) {
 
     for (int i = 0, textLength = strlen(text); i < textLength; i++) {
         if (isupper(text[i]))
-            text[i] = (text[i] - 65 + key) % 26 + 65;
+            text[i] = (text[i] - 'A' + key) % 26 + 'A';
         if (islower(text[i]))
-            text[i] = (text[i] - 97 + key) % 26 + 97;
+            text[i] = (text[i] - 'a' + key) % 26 + 'a';
     }
 
     printf("ciphertext: %s\n", text);
