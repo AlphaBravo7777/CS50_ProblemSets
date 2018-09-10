@@ -1,7 +1,8 @@
 #include <cs50.h>
 #include <stdio.h>
 
-int main(void) {
+int main(void)
+{
     int h = 0, height = 0;
 
     do {
@@ -15,6 +16,7 @@ int main(void) {
             printf(" ");
         for (int i = 0; i < h; i++)
             printf("#");
+        
         printf("##\n");
         h++;
     } while (h != height);
