@@ -223,9 +223,8 @@ bool won()
 {
     for (int i = 0, numTile = 1; i < d; i++)
         for (int j = 0; j < d; j++, numTile++)
-            if ((i != d - 1) || (j != d - 1))
-                if (board[i][j] != numTile)
-                    return false;
+            if (((i != d - 1) || (j != d - 1)) && (board[i][j] != numTile))
+                return false;
 
     return true;
 }
