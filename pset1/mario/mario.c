@@ -1,7 +1,7 @@
 #include <cs50.h>
 #include <stdio.h>
 
-int main(void)
+int main()
 {
     int h = 0, height = 0;
 
