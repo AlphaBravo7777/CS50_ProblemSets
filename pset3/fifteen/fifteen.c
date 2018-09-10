@@ -162,9 +162,9 @@ void draw()
     for (int i = 0; i < d; i++) {
         for (int j = 0; j < d; j++) {
             if (board[i][j] == 0)
-                printf("__");
+                printf("___");
             else
-                printf ("%2i", board[i][j]);
+                printf ("%3i", board[i][j]);
 
             if (j < d - 1)
                 printf("|");
@@ -174,8 +174,8 @@ void draw()
 
         if (i < d - 1) {
             for (int j = 0; j < d - 1; j++)
-                printf ("--+");
-            printf ("--\n");
+                printf ("---+");
+            printf ("---\n");
         }
     }
 }
