@@ -1,7 +1,8 @@
 #include <cs50.h>
 #include <stdio.h>
 
-int main(void) {
+int main(void)
+{
     int change = 0;
     do {
         change =  get_float("How much change is owed?: ") * 10000/100;
