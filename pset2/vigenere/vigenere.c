@@ -31,7 +31,8 @@ int main(int argc, string argv[])
             text[i] = (text[i] - 'A' + key[(i - offset) % keyLength]) % 26 + 'A';
         else if (islower(text[i]))
             text[i] = (text[i] - 'a' + key[(i - offset) % keyLength]) % 26 + 'a';
-        else offset++;
+        else 
+            offset++;
     }
 
     printf("ciphertext: %s\n", text);
