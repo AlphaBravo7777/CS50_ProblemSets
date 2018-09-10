@@ -1,9 +1,9 @@
-Start the game with the dimension of the field n:
+Start game with dimension of the field n:
 
     make fifteen
     ./fifteen n
 
-Test the game with the dimension of the field 3 with moves from file '3x3turns.txt':
+Test game with dimension of the field 3 with moves from file '3x3turns.txt':
 
     make fifteen
     ./fifteen 3 < 3x3turns.txt
