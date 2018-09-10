@@ -211,7 +211,7 @@ bool move(int tile)
         }
     }
     
-    printf("Internal error! Contact the developer for bug fixes\n");
+    printf("Internal error! Contact with developer for bug fixes\n");
     return false;
 }
 
