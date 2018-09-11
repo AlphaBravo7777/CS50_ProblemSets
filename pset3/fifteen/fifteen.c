@@ -211,7 +211,7 @@ bool move(int tile)
         }
     }
     
-    printf("Internal error! Contact with developer for bug fixes\n");
+    printf("Error 404: tile not found! Contact with developer for bug fixes\n");
     return false;
 }
 
