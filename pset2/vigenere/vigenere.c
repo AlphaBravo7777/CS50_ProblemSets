@@ -19,9 +19,8 @@ int main(int argc, string argv[])
             printf("The key must contain only the characters a-z or A-Z\n");
             return 1;
         }
-        if (islower(key[i]))
-            key[i] -= 32;
-        key[i] -= 'A';
+
+        key[i] = toupper(key[i]) - 'A';
     }
 
     string text = get_string("Enter the text for encryption with the Vigenere cipher:\n");
@@ -31,7 +30,7 @@ int main(int argc, string argv[])
             text[i] = (text[i] - 'A' + key[(i - offset) % keyLength]) % 26 + 'A';
         else if (islower(text[i]))
             text[i] = (text[i] - 'a' + key[(i - offset) % keyLength]) % 26 + 'a';
-        else 
+        else
             offset++;
     }
 
