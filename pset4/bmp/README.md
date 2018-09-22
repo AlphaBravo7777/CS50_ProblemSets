@@ -48,7 +48,7 @@ Run commands in console:
 metadatabmp.c
 ---
 
-This is an auxiliary program for viewing metadata from bmp files
+This is an auxiliary program for viewing metadata from bmp files. Metadata is written to the created text file
 
 ### Build
 
