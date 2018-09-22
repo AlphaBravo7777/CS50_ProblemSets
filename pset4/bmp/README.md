@@ -4,7 +4,7 @@ Description of files
 whodunit.c
 ---
 
-The program removes red and black pixels and makes the file klue.bmp usable for viewing
+This program removes red and black pixels and makes the file klue.bmp usable for viewing
 
 ### Build
 
@@ -23,7 +23,7 @@ Run commands in console:
 resize.c
 ---
 
-The program enlarges the original image a specified number of times and saves it to a new file
+This program enlarges the original image a specified number of times and saves it to a new file
 
 ### Build
 
