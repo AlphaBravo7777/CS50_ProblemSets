@@ -6,7 +6,7 @@ Description of files
 whodunit.c
 ---
 
-This program removes red and black pixels and makes the file klue.bmp usable for viewing
+This program removes red and black pixels and makes the file clue.bmp usable for viewing
 
 ### Build
 
