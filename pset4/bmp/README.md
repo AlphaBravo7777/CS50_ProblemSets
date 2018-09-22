@@ -2,6 +2,7 @@ Description of files
 ===
     
     
+    
 whodunit.c
 ---
 
@@ -20,6 +21,7 @@ Run commands in console:
 
     $ cd pset4/bmp
     $ ./whodunit clue.bmp verdict.bmp
+
 
 
 resize.c
@@ -42,6 +44,7 @@ Run commands in console:
     $ ./resize 4 smiley.bmp resize.bmp
 
 
+
 metadatabmp.c
 ---
 
@@ -60,6 +63,7 @@ Run commands in console:
 
     $ cd pset4/bmp
     $ ./metadatabmp clue.bmp
+
 
 
 Other commands (resize.c for example)
