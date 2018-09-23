@@ -38,7 +38,7 @@ int main()
             jpgPtr = fopen(jpgName, "w");
             if (jpgPtr == NULL) {
                 fclose(cardPtr);
-                fprintf(stderr, "Could not create %s.\n", jpgName);
+                printf("Could not create \"%s\".\n", jpgName);
                 return 2;
             }
         }
