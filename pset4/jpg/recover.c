@@ -7,8 +7,8 @@
  * Recovers JPEGs from a forensic image.
  */
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #define BUF_SIZE 512
 
