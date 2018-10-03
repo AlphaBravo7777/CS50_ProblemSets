@@ -27,18 +27,18 @@ int main(int argc, char* argv[])
     }
 
     // remember filenames
-    char* infile = argv[2];
-    char* outfile = argv[3];
+    char *infile = argv[2];
+    char *outfile = argv[3];
 
     // open input file
-    FILE* inptr = fopen(infile, "r");
+    FILE *inptr = fopen(infile, "r");
     if (inptr == NULL) {
         printf("Could not open %s.\n", infile);
         return 3;
     }
 
     // open output file
-    FILE* outptr = fopen(outfile, "w");
+    FILE *outptr = fopen(outfile, "w");
     if (outptr == NULL) {
         fclose(inptr);
         fprintf(stderr, "Could not create %s.\n", outfile);
