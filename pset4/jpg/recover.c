@@ -14,13 +14,13 @@
 
 int main()
 {
-    FILE* rawPtr = fopen("card.raw", "r");
+    FILE *rawPtr = fopen("card.raw", "r");
     if (rawPtr == NULL) {
         printf("Could not open \"card.raw\".\n");
         return 1;
     }
 
-    FILE* jpgPtr = NULL;
+    FILE *jpgPtr = NULL;
     char jpgName[8];
     unsigned char jpgID = 0;
     unsigned char buf[BUF_SIZE];
