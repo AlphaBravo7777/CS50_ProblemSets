@@ -57,7 +57,7 @@ int main(int argc, string argv[])
     }
 
     // open log
-    FILE* file = fopen("log.txt", "w");
+    FILE *file = fopen("log.txt", "w");
     if (file == NULL)
         return 3;
 
