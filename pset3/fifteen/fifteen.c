@@ -146,7 +146,7 @@ void greet()
  */
 void init()
 {
-    for (int i = 0, numTile = d*d - 1; i < d; i++)
+    for (int i = 0, numTile = d * d - 1; i < d; i++)
         for (int j = 0; j < d; j++, numTile--)
             board[i][j] = numTile;
 
