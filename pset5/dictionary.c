@@ -78,7 +78,7 @@ bool load(const char *dictionary)
                     return false;
                 }
 
-                (currNode->ptrIn[a - 'a'])->ptrIn[PREV] = lastNode;
+                currNode->ptrIn[a - 'a']->ptrIn[PREV] = lastNode;
                 lastNode = currNode->ptrIn[a - 'a'];
             }
 
