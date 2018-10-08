@@ -24,7 +24,7 @@
 */
 #define PREV 27
 
-// data type for the dictionary tree
+// data type for dictionary tree
 typedef struct dictTrie {
     bool isWord;
     struct dictTrie *ptrIn[PREV + 1];
