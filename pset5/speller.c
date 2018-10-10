@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
     // try to open text
     char *text = (argc == 3) ? argv[2] : argv[1];
     FILE *fp = fopen(text, "r");
-    if (fp == NULL) {
+    if (!fp) {
         printf("Could not open %s.\n", text);
         unload();
         return 1;
@@ -165,8 +165,7 @@ int main(int argc, char *argv[])
     printf("TIME IN check:        %.2f\n", time_check);
     printf("TIME IN size:         %.2f\n", time_size);
     printf("TIME IN unload:       %.2f\n", time_unload);
-    printf("TIME IN TOTAL:        %.2f\n\n",
-     time_load + time_check + time_size + time_unload);
+    printf("TIME IN TOTAL:        %.2f\n\n", time_load + time_check + time_size + time_unload);
 
     // that's all folks
     return 0;
@@ -177,7 +176,7 @@ int main(int argc, char *argv[])
  */
 double calculate(const struct rusage *b, const struct rusage *a)
 {
-    if (b == NULL || a == NULL)
+    if (!b || !a)
         return 0.0;
     else
         return ((((a->ru_utime.tv_sec * 1000000 + a->ru_utime.tv_usec) -
