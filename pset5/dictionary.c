@@ -33,7 +33,7 @@ bool check(const char *word)
         if (a == '\'')
             a = 'z' + 1;
 
-        if (currNode->ptrIn[a - 'a'] == NULL)
+        if (!currNode->ptrIn[a - 'a'])
             return false;
 
         currNode = currNode->ptrIn[a - 'a'];
@@ -52,7 +52,7 @@ bool load(const char *dictionary)
         return false;
 
     rootNode = calloc(1, sizeof(*rootNode));
-    if (rootNode == NULL) {
+    if (!rootNode) {
         printf("Memory allocation error.\n");
         unload();
         return false;
@@ -70,9 +70,9 @@ bool load(const char *dictionary)
             if (a == '\'')
                 a = 'z' + 1;
 
-            if (currNode->ptrIn[a - 'a'] == NULL) {
+            if (!currNode->ptrIn[a - 'a']) {
                 currNode->ptrIn[a - 'a'] = calloc(1, sizeof(*currNode->ptrIn[a - 'a']));
-                if (currNode->ptrIn[a - 'a'] == NULL) {
+                if (!currNode->ptrIn[a - 'a']) {
                     printf("Memory allocation error.\n");
                     unload();
                     return false;
@@ -98,7 +98,7 @@ unsigned int size()
 
     currNode = lastNode;
 
-    while (lastNode != NULL) {
+    while (lastNode) {
         if (lastNode->isWord)
             dictSize++;
 
@@ -115,7 +115,7 @@ unsigned int size()
  */
 bool unload()
 {
-    while (lastNode != NULL) {
+    while (lastNode) {
         currNode = lastNode;
         lastNode = lastNode->ptrIn[PREV];
         free(currNode);
