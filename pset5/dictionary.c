@@ -21,28 +21,6 @@ dictTrie *currNode = NULL;
 dictTrie *lastNode = NULL;
 
 /**
- * Returns true if word is in dictionary else false.
- */
-bool check(const char *word)
-{
-    currNode = rootNode;
-
-    for (int i = 0; word[i] != '\0'; i++) {
-        char a = tolower(word[i]);
-
-        if (a == '\'')
-            a = 'z' + 1;
-
-        if (!currNode->ptrIn[a - 'a'])
-            return false;
-
-        currNode = currNode->ptrIn[a - 'a'];
-    }
-
-    return currNode->isWord;
-}
-
-/**
  * Loads dictionary into memory.  Returns true if successful else false.
  */
 bool load(const char *dictionary)
@@ -87,6 +65,28 @@ bool load(const char *dictionary)
     }
 
     return true;
+}
+
+/**
+ * Returns true if word is in dictionary else false.
+ */
+bool check(const char *word)
+{
+    currNode = rootNode;
+
+    for (int i = 0; word[i] != '\0'; i++) {
+        char a = tolower(word[i]);
+
+        if (a == '\'')
+            a = 'z' + 1;
+
+        if (!currNode->ptrIn[a - 'a'])
+            return false;
+
+        currNode = currNode->ptrIn[a - 'a'];
+    }
+
+    return currNode->isWord;
 }
 
 /**
