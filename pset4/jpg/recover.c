@@ -15,7 +15,7 @@
 int main()
 {
     FILE *rawPtr = fopen("card.raw", "r");
-    if (rawPtr == NULL) {
+    if (!rawPtr) {
         printf("Could not open \"card.raw\".\n");
         return 1;
     }
@@ -26,25 +26,25 @@ int main()
     unsigned char buf[BUF_SIZE];
 
     while (!feof(rawPtr)) {
-        fread(&buf, BUF_SIZE, 1, rawPtr);
+        fread(buf, BUF_SIZE, 1, rawPtr);
 
         if (buf[0] == 0xFF && buf[1] == 0xD8 && buf[2] == 0xFF) {
-            if (jpgPtr != NULL)
+            if (jpgPtr)
                 fclose(jpgPtr);
 
             sprintf(jpgName, "%03d.jpg", jpgID);
             jpgID++;
 
             jpgPtr = fopen(jpgName, "w");
-            if (jpgPtr == NULL) {
+            if (!jpgPtr) {
                 fclose(rawPtr);
                 printf("Could not create \"%s\".\n", jpgName);
                 return 2;
             }
         }
 
-        if (jpgPtr != NULL && !feof(rawPtr))
-            fwrite(&buf, BUF_SIZE, 1, jpgPtr);
+        if (jpgPtr && !feof(rawPtr))
+            fwrite(buf, BUF_SIZE, 1, jpgPtr);
     }
 
     fclose(jpgPtr);
