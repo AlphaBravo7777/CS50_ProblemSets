@@ -12,9 +12,9 @@
 
 #include <stdbool.h>
 
-// maximum length for a word + null-terminator
+// maximum length for a word
 // (e.g., pneumonoultramicroscopicsilicovolcanoconiosis)
-#define LENGTH 46
+#define LENGTH 45
 
 // data type for dictionary hash map
 typedef struct dictList {
