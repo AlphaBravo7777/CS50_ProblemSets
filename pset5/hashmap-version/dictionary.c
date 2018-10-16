@@ -14,12 +14,10 @@
 
 #include "dictionary.h"
 
-#define N 2
+#define N 3
+
 // max value of hash-function
-#define HASHMAP_SIZE 65536*N
-//#define HASHMAP_SIZE 131072
-//#define HASHMAP_SIZE 262144
-//#define HASHMAP_SIZE 524288
+#define HASHMAP_SIZE N*65536
 
 FILE *dictFile = NULL;
 
@@ -155,9 +153,9 @@ bool unload()
         }
     }
 
-    printf("\nHASHMAP_SIZE:\t%i\n", HASHMAP_SIZE);
-    printf("EMPTY CELLS:\t%i\n", busy_cells);
-    printf("LOAD FACTOR:\t%.2f\n", (double) busy_cells / (N*65536));
+    printf("\nHASHMAP SIZE:\t%i\n", HASHMAP_SIZE);
+    printf("BUSY CELLS:\t%i\n", busy_cells);
+    printf("LOAD FACTOR:\tideal %.2f\treal %.2f\n", (double) dictSize / (N*65536), (double) busy_cells / (N*65536));
     printf("ALPHA FACTOR:\t%.2f\n", (double) dictSize / busy_cells);
     printf("MAX COLLISIONS:\t%i\n", max_collisions);
 
