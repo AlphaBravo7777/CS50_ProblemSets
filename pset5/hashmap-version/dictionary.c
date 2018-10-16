@@ -15,20 +15,26 @@
 
 #include "dictionary.h"
 
+#define N 2
 // max value of hash-function
-#define HASHMAP_SIZE 131072
+#define HASHMAP_SIZE 65536*N
+//#define HASHMAP_SIZE 131072
+//#define HASHMAP_SIZE 262144
+//#define HASHMAP_SIZE 524288
 
 FILE *dictFile = NULL;
 
 dictList hashMap[HASHMAP_SIZE] = {};
 dictList *currNode = NULL;
 
-char wordBuf[LENGTH];
+char wordBuf[LENGTH + 2];
 unsigned int dictSize = 0;
+
+unsigned int max_collisions = 0;
 
 /**
  * Pearson hashing
- * (taken from https//en.wikipedia.org/wiki/Pearson_hashing)
+ * (taken from https://en.wikipedia.org/wiki/Pearson_hashing)
  */
 unsigned int hash(const char *word)
 {
@@ -62,7 +68,7 @@ unsigned int hash(const char *word)
         h2 = T[h2 ^ word[i]];
     }
 
-    return ((h2%2) << 16) + (h1 << 8) + h0;
+    return ((h2%N) << 16) + (h1 << 8) + h0;
 }
 
 /**
@@ -74,12 +80,18 @@ bool load(const char *dictionary)
     if (!dictFile)
         return false;
 
-    while (fgets(wordBuf, LENGTH + 1, dictFile)) {
+    while (fgets(wordBuf, LENGTH + 2, dictFile)) {
+        unsigned int collisions = 0;
         wordBuf[strlen(wordBuf) - 1] = '\0';
         currNode = hashMap + hash(wordBuf);
 
-        while (currNode->nextNode)
+        while (currNode->nextNode) {
             currNode = currNode->nextNode;
+            collisions++;
+        }
+
+        if (collisions > max_collisions)
+            max_collisions = collisions;
 
         currNode->nextNode = calloc(1, sizeof(*currNode->nextNode));
         if (!currNode->nextNode) {
@@ -88,7 +100,7 @@ bool load(const char *dictionary)
             return false;
         }
 
-        strncpy(currNode->nextNode->dictWord, wordBuf, strlen(wordBuf));
+        strcpy(currNode->nextNode->dictWord, wordBuf);
         dictSize++;
     }
 
@@ -129,9 +141,13 @@ unsigned int size()
 bool unload()
 {
     dictList *tempNode = NULL;
+    unsigned int empty_cells = 0;
 
     for (int i = 0; i < HASHMAP_SIZE; i++) {
         currNode = hashMap[i].nextNode;
+
+        if (!currNode)
+            empty_cells++;
 
         while (currNode) {
             tempNode = currNode;
@@ -139,6 +155,12 @@ bool unload()
             free(tempNode);
         }
     }
+
+    printf("\nHASHMAP_SIZE:\t%i\n", HASHMAP_SIZE);
+    printf("EMPTY CELLS:\t%i\n", empty_cells);
+    printf("FILL FACTOR:\t%.2f\n", 1 - (double) empty_cells / (N*65536));
+    printf("ALPHA FACTOR:\t%.2f\n", (double) dictSize / (N*65536 - empty_cells));
+    printf("MAX COLLISIONS:\t%i\n", max_collisions);
 
     if (fclose(dictFile))
         return false;
