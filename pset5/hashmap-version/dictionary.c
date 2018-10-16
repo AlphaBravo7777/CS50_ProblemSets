@@ -140,13 +140,13 @@ unsigned int size()
 bool unload()
 {
     dictList *tempNode = NULL;
-    unsigned int empty_cells = 0;
+    unsigned int busy_cells = 0;
 
     for (int i = 0; i < HASHMAP_SIZE; i++) {
         currNode = hashMap[i].nextNode;
 
-        if (!currNode)
-            empty_cells++;
+        if (currNode)
+            busy_cells++;
 
         while (currNode) {
             tempNode = currNode;
@@ -156,9 +156,9 @@ bool unload()
     }
 
     printf("\nHASHMAP_SIZE:\t%i\n", HASHMAP_SIZE);
-    printf("EMPTY CELLS:\t%i\n", empty_cells);
-    printf("FILL FACTOR:\t%.2f\n", 1 - (double) empty_cells / (N*65536));
-    printf("ALPHA FACTOR:\t%.2f\n", (double) dictSize / (N*65536 - empty_cells));
+    printf("EMPTY CELLS:\t%i\n", busy_cells);
+    printf("LOAD FACTOR:\t%.2f\n", (double) busy_cells / (N*65536));
+    printf("ALPHA FACTOR:\t%.2f\n", (double) dictSize / busy_cells);
     printf("MAX COLLISIONS:\t%i\n", max_collisions);
 
     if (fclose(dictFile))
