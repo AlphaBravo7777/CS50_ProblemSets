@@ -97,14 +97,12 @@ unsigned int size()
 
     currNode = lastNode;
 
-    while (lastNode) {
-        if (lastNode->isWord)
+    while (currNode) {
+        if (currNode->isWord)
             dictSize++;
 
-        lastNode = lastNode->ptrIn[PREV];
+        currNode = currNode->ptrIn[PREV];
     }
-
-    lastNode = currNode;
 
     return dictSize;
 }
