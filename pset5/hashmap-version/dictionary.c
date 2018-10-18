@@ -29,9 +29,9 @@ int hashIndex(const char *wordKey, int i) {
     int h = 0;
 
     for (int j = 0, keyLength = strlen(wordKey); j < keyLength; j++)
-        h = (37 * h + wordKey[j]) % (HASHMAP_SIZE - 1);
+        h = (37*h + wordKey[j]) % (HASHMAP_SIZE - 1);
 
-    return (h + i * i) % HASHMAP_SIZE;
+    return (h + i*i) % HASHMAP_SIZE;
 }
 
 /**
