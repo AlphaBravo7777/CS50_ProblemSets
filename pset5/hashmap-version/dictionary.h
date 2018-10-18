@@ -16,12 +16,6 @@
 // (e.g., pneumonoultramicroscopicsilicovolcanoconiosis)
 #define LENGTH 45
 
-// data type for dictionary hash map
-typedef struct dictList {
-    char dictWord[LENGTH];
-    struct dictList *nextNode;
-} dictList;
-
 /**
  * Loads dictionary into memory.  Returns true if successful else false.
  */
