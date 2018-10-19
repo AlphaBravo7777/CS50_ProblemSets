@@ -25,11 +25,11 @@ char wordBuf[LENGTH + 2];
 /*
 * Simple quick hashing with quadratic probing for resolving collisions
 */
-int hashIndex(const char *wordKey, int i) {
-    int h = 0;
+unsigned int hashIndex(const char *wordKey, int i) {
+    unsigned int h = 0;
 
     for (int j = 0, keyLength = strlen(wordKey); j < keyLength; j++)
-        h = (37*h + wordKey[j]) % (HASHMAP_SIZE - 1);
+        h = ((h << 8) ^ wordKey[j]) % (HASHMAP_SIZE - 1);
 
     return (h + i*i) % HASHMAP_SIZE;
 }
