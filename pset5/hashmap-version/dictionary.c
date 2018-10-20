@@ -19,7 +19,6 @@
 
 FILE *dictFile = NULL;
 unsigned int dictSize = 0;
-bool busyList[HASHMAP_SIZE] = {};
 char hashMap[HASHMAP_SIZE][LENGTH + 1] = {};
 char wordBuf[LENGTH + 2];
 
@@ -48,11 +47,10 @@ bool load(const char *dictionary)
         wordBuf[strlen(wordBuf) - 1] = '\0';
         int hashIndex = hash(wordBuf);
 
-        for (int i = 1; busyList[hashIndex]; i += 2)
+        for (int i = 1; hashMap[hashIndex][0]; i += 2)
             hashIndex = (hashIndex + i) % HASHMAP_SIZE;
 
         strcpy(hashMap[hashIndex], wordBuf);
-        busyList[hashIndex] = true;
         dictSize++;
     }
 
@@ -67,7 +65,7 @@ bool check(const char *word)
     for (int i = 0, wordLength = strlen(word); i <= wordLength; i++)
         wordBuf[i] = tolower(word[i]);
 
-    for (int i = 1, hashIndex = hash(wordBuf); busyList[hashIndex]; i += 2) {
+    for (int i = 1, hashIndex = hash(wordBuf); hashMap[hashIndex][0]; i += 2) {
         if (!strcmp(wordBuf, hashMap[hashIndex]))
             return true;
 
