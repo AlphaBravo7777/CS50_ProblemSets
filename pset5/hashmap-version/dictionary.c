@@ -1,12 +1,3 @@
-/**
- * dictionary.c
- *
- * Computer Science 50
- * Problem Set 5
- *
- * Implements a dictionary's functionality.
- */
-
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,19 +10,20 @@
 
 FILE *dictFile = NULL;
 unsigned int dictSize = 0;
+bool busyList[HASHMAP_SIZE] = {};
 char hashMap[HASHMAP_SIZE][LENGTH + 1] = {};
 char wordBuf[LENGTH + 2];
 
 /*
-* Simple quick hashing with quadratic probing for resolving collisions
+* Simple quick hashing with quadratic probing in load() and check() for resolving collisions
 */
-unsigned int hashIndex(const char *wordKey, int i) {
-    unsigned int h = 0;
+int hash(const char *wordKey) {
+    unsigned int h = wordKey[0];
 
-    for (int j = 0, keyLength = strlen(wordKey); j < keyLength; j++)
+    for (int j = 1, keyLength = strlen(wordKey); j < keyLength; j++)
         h = ((h << 8) ^ wordKey[j]) % (HASHMAP_SIZE - 1);
 
-    return (h + i*i) % HASHMAP_SIZE;
+    return h;
 }
 
 /**
@@ -45,11 +37,13 @@ bool load(const char *dictionary)
 
     while (fgets(wordBuf, LENGTH + 2, dictFile)) {
         wordBuf[strlen(wordBuf) - 1] = '\0';
+        int hashIndex = hash(wordBuf);
 
-        int i = 0;
-        for (; hashMap[hashIndex(wordBuf, i)][0]; i++) {}
+        for (int i = 1; busyList[hashIndex]; i += 2, depth++)
+            hashIndex = (hashIndex + i) % HASHMAP_SIZE;
 
-        strcpy(hashMap[hashIndex(wordBuf, i)], wordBuf);
+        strcpy(hashMap[hashIndex], wordBuf);
+        busyList[hashIndex] = true;
         dictSize++;
     }
 
@@ -64,9 +58,12 @@ bool check(const char *word)
     for (int i = 0, wordLength = strlen(word); i <= wordLength; i++)
         wordBuf[i] = tolower(word[i]);
 
-    for (int i = 0; hashMap[hashIndex(wordBuf, i)][0]; i++)
-        if (!strcmp(wordBuf, hashMap[hashIndex(wordBuf, i)]))
+    for (int i = 1, hashIndex = hash(wordBuf); busyList[hashIndex]; i += 2) {
+        if (!strcmp(wordBuf, hashMap[hashIndex]))
             return true;
+
+        hashIndex = (hashIndex + i) % HASHMAP_SIZE;
+    }
 
     return false;
 }
