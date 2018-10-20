@@ -48,7 +48,7 @@ bool load(const char *dictionary)
         wordBuf[strlen(wordBuf) - 1] = '\0';
         int hashIndex = hash(wordBuf);
 
-        for (int i = 1; busyList[hashIndex]; i += 2, depth++)
+        for (int i = 1; busyList[hashIndex]; i += 2)
             hashIndex = (hashIndex + i) % HASHMAP_SIZE;
 
         strcpy(hashMap[hashIndex], wordBuf);
