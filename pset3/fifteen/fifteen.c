@@ -219,8 +219,8 @@ bool move(int tile)
 bool won()
 {
     for (int i = 0, numTile = 1; i < d; i++)
-        for (int j = 0; j < d; j++, numTile++)
-            if (((i != d - 1) || (j != d - 1)) && (board[i][j] != numTile))
+        for (int j = 0; (j < d) && (numTile < d*d); j++, numTile++)
+            if (board[i][j] != numTile)
                 return false;
 
     return true;
