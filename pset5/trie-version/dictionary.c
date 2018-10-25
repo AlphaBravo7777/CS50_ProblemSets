@@ -13,11 +13,25 @@
 
 #include "dictionary.h"
 
-FILE *dictFile = NULL;
+/**
+* The size of the English alphabet, including apostrophe.
+* The last index stores link to the previously created node.
+* This will free up memory and calculate size of the dictionary for linear time.
+* (pun: "PREVious" address of node and "PREView" for alphabet :-)
+*/
+#define PREV 27
+
+// data type for dictionary tree
+typedef struct dictTrie {
+    bool isWord;
+    struct dictTrie *ptrIn[PREV + 1];
+} dictTrie;
 
 dictTrie *rootNode = NULL;
 dictTrie *currNode = NULL;
 dictTrie *lastNode = NULL;
+
+FILE *dictFile = NULL;
 
 /**
  * Loads dictionary into memory.  Returns true if successful else false.
