@@ -17,7 +17,7 @@
 * The size of the English alphabet, including apostrophe.
 * The last index stores link to the previously created node.
 * This will free up memory and calculate size of the dictionary for linear time.
-* (pun: "PREVious" address of node and "PREView" for alphabet :-)
+* (pun: "PREVious" address of created node and "PREView" for alphabet :-)
 */
 #define PREV 27
 
