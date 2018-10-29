@@ -108,7 +108,6 @@ bool check(const char *word)
 unsigned int size()
 {
     unsigned int dictSize = 0;
-
     currNode = lastNode;
 
     while (currNode) {
