@@ -35,7 +35,7 @@ char wordBuf[LENGTH + 2];
 unsigned hash(const char *wordKey) {
     unsigned h = wordKey[0];
 
-    for (int j = 1, keyLength = strlen(wordKey); j < keyLength; j++)
+    for (int j = 1; wordKey[j]; j++)
         h = ((h << 8) ^ wordKey[j]) % HASHMAP_SIZE;
 
     return h;
