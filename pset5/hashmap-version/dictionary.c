@@ -101,9 +101,7 @@ bool unload()
 {
     dictList *tempNode = NULL;
 
-    for (int i = 0; i < HASHMAP_SIZE; i++) {
-        currNode = hashMap[i];
-
+    for (int i = 0; i < HASHMAP_SIZE; currNode = hashMap[i], i++) {     
         while (currNode) {
             tempNode = currNode;
             currNode = currNode->nextNode;
