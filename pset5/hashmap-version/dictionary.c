@@ -50,7 +50,7 @@ bool load(const char *dictionary)
     while (fgets(wordBuf, LENGTH + 2, dictFile)) {
         wordBuf[strlen(wordBuf) - 1] = '\0';
 
-        currNode = calloc(1, strlen(wordBuf) + 1 + sizeof(currNode));
+        currNode = calloc(1, sizeof(currNode) + strlen(wordBuf) + 1);
         if (!currNode) {
             printf("Memory allocation error.\n");
             unload();
