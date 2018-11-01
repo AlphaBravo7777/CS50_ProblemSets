@@ -18,8 +18,8 @@
 #define HASHMAP_SIZE 199999
 
 typedef struct dictList {
-    char *dictWord;
     struct dictList *nextNode;
+    char dictWord;
 } dictList;
 
 dictList *hashMap[HASHMAP_SIZE] = {};
@@ -50,14 +50,14 @@ bool load(const char *dictionary)
     while (fgets(wordBuf, LENGTH + 2, dictFile)) {
         wordBuf[strlen(wordBuf) - 1] = '\0';
 
-        currNode = calloc(1, sizeof(*currNode));
+        currNode = calloc(1, strlen(wordBuf) + 1 + sizeof(currNode));
         if (!currNode) {
             printf("Memory allocation error.\n");
             unload();
             return false;
         }
 
-        currNode->dictWord = wordBuf;
+        strcpy(&currNode->dictWord, wordBuf);
         dictSize++;
 
         unsigned hashIndex = hash(wordBuf);
@@ -77,7 +77,7 @@ bool check(const char *word)
         wordBuf[i] = tolower(word[i]);
 
     for (currNode = hashMap[hash(wordBuf)]; currNode; currNode = currNode->nextNode)
-        if (!strcmp(wordBuf, currNode->dictWord))
+        if (!strcmp(wordBuf, &currNode->dictWord))
             return true;
 
     return false;
@@ -98,9 +98,9 @@ bool unload()
 {
     dictList *tempNode = NULL;
 
-    for (int i = 0; i < HASHMAP_SIZE; i++) {     
+    for (int i = 0; i < HASHMAP_SIZE; i++) {
         currNode = hashMap[i];
-        
+
         while (currNode) {
             tempNode = currNode;
             currNode = currNode->nextNode;
