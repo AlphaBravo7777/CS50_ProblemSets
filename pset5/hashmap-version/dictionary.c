@@ -20,7 +20,7 @@
 // datatype for dictionary list
 typedef struct dictList {
     struct dictList *nextNode;
-    char dictWord;
+    char dictWord[];
 } dictList;
 
 dictList *hashMap[HASHMAP_SIZE] = {};
@@ -58,7 +58,7 @@ bool load(const char *dictionary)
             return false;
         }
 
-        strcpy(&currNode->dictWord, wordBuf);
+        strcpy(currNode->dictWord, wordBuf);
         dictSize++;
 
         unsigned hashIndex = hash(wordBuf);
@@ -78,7 +78,7 @@ bool check(const char *word)
         wordBuf[i] = tolower(word[i]);
 
     for (currNode = hashMap[hash(wordBuf)]; currNode; currNode = currNode->nextNode)
-        if (!strcmp(wordBuf, &currNode->dictWord))
+        if (!strcmp(wordBuf, currNode->dictWord))
             return true;
 
     return false;
