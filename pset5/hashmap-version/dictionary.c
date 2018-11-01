@@ -17,6 +17,7 @@
 // prime for max hash value
 #define HASHMAP_SIZE 199999
 
+// datatype for dictionary list
 typedef struct dictList {
     struct dictList *nextNode;
     char dictWord;
@@ -29,9 +30,9 @@ FILE *dictFile = NULL;
 unsigned dictSize = 0;
 char wordBuf[LENGTH + 2];
 
-/*
-* Simple quick hashing
-*/
+/**
+ * Simple quick hashing
+ */
 unsigned hash(const char *wordKey) {
     unsigned h = wordKey[0];
     for (int i = 1; wordKey[i]; h = h * 37 + wordKey[i], i++) {}
