@@ -53,17 +53,18 @@ bool search(int value, int values[], int n)
  */
 void sort(int values[], int n)
 {
-    bool nextRun = false;
-
-    do {
+    bool nextRun = true;
+    
+    while (nextRun) {
         nextRun = false;
+        
         for (int i = 0; i < n - 1; i++) {
-            if (values[i] > values[i+1]) {
+            if (values[i] > values[i + 1]) {
                 values[i] ^= values[i+1] ^= values[i] ^= values[i+1];
                 nextRun = true;
             }
         }
-    } while(nextRun);
+    }
 
     return;
 }
