@@ -25,17 +25,18 @@ int main(int argc, string argv[])
         printf("%i\n", values[i]);
     }
 
-    bool nextRun = false;
-
-    do {
+    bool nextRun = true;
+    
+    while (nextRun) {
         nextRun = false;
+        
         for (int i = 0; i < n - 1; i++) {
-            if (values[i] > values[i+1]) {
+            if (values[i] > values[i + 1]) {
                 values[i] ^= values[i+1] ^= values[i] ^= values[i+1];
                 nextRun = true;
             }
         }
-    } while(nextRun);
+    }
 
     printf("\nSorted array:\n");
     for (int i = 0; i < n; i++)
