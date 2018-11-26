@@ -87,7 +87,7 @@ bool check(const char *word)
 /**
  * Returns number of words in dictionary if loaded else 0 if not yet loaded.
  */
-unsigned int size()
+unsigned size()
 {
     return dictSize;
 }
