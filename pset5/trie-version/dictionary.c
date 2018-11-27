@@ -65,8 +65,7 @@ bool load(const char *dictionary)
         return false;
 
     rootNode = calloc(1, sizeof(*rootNode));
-    if (!rootNode) {
-        printf("Memory allocation error.\n");
+    if (!rootNode) {       
         unload();
         return false;
     }
@@ -85,8 +84,7 @@ bool load(const char *dictionary)
 
             if (!currNode->ptrIn[a - 'a']) {
                 currNode->ptrIn[a - 'a'] = calloc(1, sizeof(*currNode->ptrIn[a - 'a']));
-                if (!currNode->ptrIn[a - 'a']) {
-                    printf("Memory allocation error.\n");
+                if (!currNode->ptrIn[a - 'a']) {                    
                     unload();
                     return false;
                 }
