@@ -31,6 +31,21 @@ unsigned dictSize = 0;
 char wordBuf[LENGTH + 2];
 
 /**
+ * Returns true if word is in dictionary else false.
+ */
+bool check(const char *word)
+{
+    for (int i = 0, wordLength = strlen(word); i <= wordLength; i++)
+        wordBuf[i] = tolower(word[i]);
+
+    for (currNode = hashMap[hash(wordBuf)]; currNode; currNode = currNode->nextNode)
+        if (!strcmp(wordBuf, currNode->dictWord))
+            return true;
+
+    return false;
+}
+
+/**
  * Simple quick hashing
  */
 unsigned hash(const char *wordKey) {
@@ -67,21 +82,6 @@ bool load(const char *dictionary)
     }
 
     return true;
-}
-
-/**
- * Returns true if word is in dictionary else false.
- */
-bool check(const char *word)
-{
-    for (int i = 0, wordLength = strlen(word); i <= wordLength; i++)
-        wordBuf[i] = tolower(word[i]);
-
-    for (currNode = hashMap[hash(wordBuf)]; currNode; currNode = currNode->nextNode)
-        if (!strcmp(wordBuf, currNode->dictWord))
-            return true;
-
-    return false;
 }
 
 /**
