@@ -67,8 +67,7 @@ bool load(const char *dictionary)
         wordBuf[strlen(wordBuf) - 1] = '\0';
 
         currNode = malloc(sizeof(currNode) + strlen(wordBuf) + 1);
-        if (!currNode) {
-            printf("Memory allocation error.\n");
+        if (!currNode) {            
             unload();
             return false;
         }
