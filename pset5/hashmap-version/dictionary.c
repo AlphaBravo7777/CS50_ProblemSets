@@ -31,6 +31,15 @@ unsigned dictSize = 0;
 char wordBuf[LENGTH + 2];
 
 /**
+ * Simple quick hashing
+ */
+unsigned hash(const char *wordKey) {
+    unsigned h = wordKey[0];
+    for (int i = 1; wordKey[i]; h = h * 37 + wordKey[i], i++) {}
+    return h % HASHMAP_SIZE;
+}
+
+/**
  * Returns true if word is in dictionary else false.
  */
 bool check(const char *word)
@@ -43,15 +52,6 @@ bool check(const char *word)
             return true;
 
     return false;
-}
-
-/**
- * Simple quick hashing
- */
-unsigned hash(const char *wordKey) {
-    unsigned h = wordKey[0];
-    for (int i = 1; wordKey[i]; h = h * 37 + wordKey[i], i++) {}
-    return h % HASHMAP_SIZE;
 }
 
 /**
