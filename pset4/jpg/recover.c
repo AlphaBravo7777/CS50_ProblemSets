@@ -24,9 +24,7 @@ int main()
     unsigned char jpgID = 0;
     unsigned char buf[BUF_SIZE];
 
-    while (!feof(rawPtr)) {
-        fread(buf, BUF_SIZE, 1, rawPtr);
-
+    while (fread(buf, BUF_SIZE, 1, rawPtr)) {
         if (buf[0] == 0xFF && buf[1] == 0xD8 && buf[2] == 0xFF) {
             if (jpgPtr)
                 fclose(jpgPtr);
@@ -42,7 +40,7 @@ int main()
             }
         }
 
-        if (jpgPtr && !feof(rawPtr))
+        if (jpgPtr)
             fwrite(buf, BUF_SIZE, 1, jpgPtr);
     }
 
