@@ -34,8 +34,8 @@ int main()
 
             jpgFile = fopen(jpgName, "w");
             if (!jpgFile) {
-                fclose(rawFile);
                 printf("Could not create \"%s\".\n", jpgName);
+                fclose(rawFile);
                 return 2;
             }
         }
