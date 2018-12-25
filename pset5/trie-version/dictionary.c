@@ -24,7 +24,7 @@
 // data type for dictionary tree
 typedef struct dictTrie {
     bool isWord;
-    struct dictTrie *ptrIn[PREV + 1];
+    struct dictTrie *nextLetter[PREV + 1];
 } dictTrie;
 
 dictTrie *rootNode = NULL;
@@ -46,10 +46,10 @@ bool check(const char *word)
         if (a == '\'')
             a = 'z' + 1;
 
-        if (!currNode->ptrIn[a - 'a'])
+        if (!currNode->nextLetter[a - 'a'])
             return false;
 
-        currNode = currNode->ptrIn[a - 'a'];
+        currNode = currNode->nextLetter[a - 'a'];
     }
 
     return currNode->isWord;
@@ -65,7 +65,7 @@ bool load(const char *dictionary)
         return false;
 
     rootNode = calloc(1, sizeof(*rootNode));
-    if (!rootNode) {       
+    if (!rootNode) {
         unload();
         return false;
     }
@@ -82,18 +82,18 @@ bool load(const char *dictionary)
             if (a == '\'')
                 a = 'z' + 1;
 
-            if (!currNode->ptrIn[a - 'a']) {
-                currNode->ptrIn[a - 'a'] = calloc(1, sizeof(*currNode->ptrIn[a - 'a']));
-                if (!currNode->ptrIn[a - 'a']) {                    
+            if (!currNode->nextLetter[a - 'a']) {
+                currNode->nextLetter[a - 'a'] = calloc(1, sizeof(*currNode->nextLetter[a - 'a']));
+                if (!currNode->nextLetter[a - 'a']) {
                     unload();
                     return false;
                 }
 
-                currNode->ptrIn[a - 'a']->ptrIn[PREV] = lastNode;
-                lastNode = currNode->ptrIn[a - 'a'];
+                currNode->nextLetter[a - 'a']->nextLetter[PREV] = lastNode;
+                lastNode = currNode->nextLetter[a - 'a'];
             }
 
-            currNode = currNode->ptrIn[a - 'a'];
+            currNode = currNode->nextLetter[a - 'a'];
         }
     }
 
@@ -112,7 +112,7 @@ unsigned size()
         if (currNode->isWord)
             dictSize++;
 
-        currNode = currNode->ptrIn[PREV];
+        currNode = currNode->nextLetter[PREV];
     }
 
     return dictSize;
@@ -125,7 +125,7 @@ bool unload()
 {
     while (lastNode) {
         currNode = lastNode;
-        lastNode = lastNode->ptrIn[PREV];
+        lastNode = lastNode->nextLetter[PREV];
         free(currNode);
     }
 
