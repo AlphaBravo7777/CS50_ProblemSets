@@ -4,32 +4,34 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define CONVERSION(a) (text[i] = (text[i] - (a) + keyWord[(i - offset) % keyLength]) % 26 + (a))
+
 int main(int argc, string argv[])
 {
     if (argc != 2) {
-        printf("Usage: ./vigenere k\n");
+        printf("Usage: ./vigenere keyword\n");
         return 1;
     }
 
-    string key = argv[1];
-    int keyLength = strlen(key);
+    string keyWord = argv[1];
+    int keyLength = strlen(keyWord);
 
     for (int i = 0; i < keyLength; i++) {
-        if (!isalpha(key[i])) {
-            printf("The key must contain only the characters a-z or A-Z\n");
+        if (!isalpha(keyWord[i])) {
+            printf("invalid keyword\n");
             return 1;
         }
 
-        key[i] = toupper(key[i]) - 'A';
+        keyWord[i] = toupper(keyWord[i]) - 'A';
     }
 
-    string text = get_string("Enter the text for encryption with the Vigenere cipher:\n");
+    string text = get_string("plaintext: ");
 
-    for (int i = 0, offset = 0, textLength = strlen(text); i < textLength; i++) {
+    for (int i = 0, offset = 0; text[i]; i++) {
         if (isupper(text[i]))
-            text[i] = (text[i] - 'A' + key[(i - offset) % keyLength]) % 26 + 'A';
+            CONVERSION('A');
         else if (islower(text[i]))
-            text[i] = (text[i] - 'a' + key[(i - offset) % keyLength]) % 26 + 'a';
+            CONVERSION('a');
         else
             offset++;
     }
