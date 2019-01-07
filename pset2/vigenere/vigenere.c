@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define CONVERSION(a) (text[i] = (text[i] - (a) + keyWord[(i - offset) % keyLength]) % 26 + (a))
+#define ENCRYPTION(a) (text[i] = (text[i] - (a) + keyWord[(i - offset) % keyLength]) % 26 + (a))
 
 int main(int argc, string argv[])
 {
@@ -28,9 +28,9 @@ int main(int argc, string argv[])
 
     for (int i = 0, offset = 0; text[i]; i++) {
         if (isupper(text[i]))
-            CONVERSION('A');
+            ENCRYPTION('A');
         else if (islower(text[i]))
-            CONVERSION('a');
+            ENCRYPTION('a');
         else
             offset++;
     }
