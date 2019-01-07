@@ -2,7 +2,6 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 #define CONVERSION(a) (text[i] = (text[i] - (a) + keyWord[(i - offset) % keyLength]) % 26 + (a))
 
@@ -14,9 +13,9 @@ int main(int argc, string argv[])
     }
 
     string keyWord = argv[1];
-    int keyLength = strlen(keyWord);
+    int keyLength = 0;
 
-    for (int i = 0; i < keyLength; i++) {
+    for (int i = 0; keyWord[i]; keyLength++, i++) {
         if (!isalpha(keyWord[i])) {
             printf("invalid keyword\n");
             return 1;
