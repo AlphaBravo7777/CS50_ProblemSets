@@ -74,10 +74,11 @@ $(function() {
  */
 function addMarker(place)
 {
-    marker = new google.maps.Marker({
+    var marker = new google.maps.Marker({
+        icon: "http://maps.google.com/mapfiles/kml/pal2/icon23.png",
+        title: place.place_name + ", " + place.admin_name1 + ", " + place.postal_code,
         position: {lat: parseFloat(place.latitude), lng: parseFloat(place.longitude)},
-        map: map,
-        title: place.place_name
+        map: map
     });
     markers.push(marker);
 
@@ -86,7 +87,7 @@ function addMarker(place)
 
         $.getJSON("articles.php", {geo: place.postal_code})
         .done(function(data, textStatus, jqXHR) {
-            if (data.length == 0)
+            if (data.length === 0)
             {
                 showInfo(marker, "No news for this area");
             }
@@ -194,6 +195,8 @@ function removeMarkers()
     {
         markers[i].setMap(null);
     }
+
+    markers.length = 0;
 }
 
 /**
