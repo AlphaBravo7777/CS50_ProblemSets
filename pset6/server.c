@@ -630,6 +630,11 @@ bool parse(const char *line, char *abs_path, char *query)
     strcpy(abs_path, strchr(line, ' ') + 1);
     *strchr(abs_path, ' ') = '\0';
 
+    if (abs_path[0] != '/') {
+        error(501);
+        return false;
+    }
+    
     if (strchr(abs_path, '"')) {
         error(400);
         return false;
@@ -638,11 +643,6 @@ bool parse(const char *line, char *abs_path, char *query)
     if (strchr(abs_path, '?')) {
         strcpy(query, strchr(abs_path, '?') + 1);
         *strchr(abs_path, '?') = '\0';
-    }
-
-    if (abs_path[0] != '/') {
-        error(501);
-        return false;
     }
 
     return true;
