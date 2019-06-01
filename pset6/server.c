@@ -400,10 +400,10 @@ char *indexes(const char *path)
         strcpy(indexfile, path);
         strcat(indexfile, indexlist[i]);
 
-        if (access(indexfile, F_OK))
-            free(indexfile);
-        else
+        if (!access(indexfile, F_OK))
             return indexfile;
+        
+        free(indexfile);
     }
 
     return NULL;
