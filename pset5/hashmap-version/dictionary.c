@@ -48,15 +48,15 @@ bool load(const char *dictionary)
     if (!dictFile)
         return false;
 
-    while (fgets(wordBuf, LENGTH + 2, dictFile)) {
-        wordBuf[strlen(wordBuf) - 1] = '\0';
-
-        currNode = malloc(sizeof(currNode) + strlen(wordBuf) + 1);
-        if (!currNode) {            
+    for (const size_t nodePtrSize = sizeof(currNode); fgets(wordBuf, LENGTH + 2, dictFile); ) {
+        size_t wordBufLen = strlen(wordBuf);
+        currNode = malloc(nodePtrSize + wordBufLen);
+        if (!currNode) {
             unload();
             return false;
         }
 
+        wordBuf[wordBufLen - 1] = '\0';
         strcpy(currNode->dictWord, wordBuf);
         dictSize++;
 
