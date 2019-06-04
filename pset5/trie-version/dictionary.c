@@ -64,8 +64,8 @@ bool load(const char *dictionary)
     if (!dictFile)
         return false;
 
-    const size_t dictNodeSize = sizeof(dictTrie);
-    rootNode = calloc(1, dictNodeSize);
+    const size_t nodePtrSize = sizeof(dictTrie);
+    rootNode = calloc(1, nodePtrSize);
     if (!rootNode) {
         unload();
         return false;
@@ -84,7 +84,7 @@ bool load(const char *dictionary)
                 a = 'z' + 1;
 
             if (!currNode->nextLetter[a - 'a']) {
-                currNode->nextLetter[a - 'a'] = calloc(1, dictNodeSize);
+                currNode->nextLetter[a - 'a'] = calloc(1, nodePtrSize);
                 if (!currNode->nextLetter[a - 'a']) {
                     unload();
                     return false;
