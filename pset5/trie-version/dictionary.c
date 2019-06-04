@@ -64,7 +64,7 @@ bool load(const char *dictionary)
     if (!dictFile)
         return false;
 
-    size_t dictNodeSize = sizeof(dictTrie);
+    const size_t dictNodeSize = sizeof(dictTrie);
     rootNode = calloc(1, dictNodeSize);
     if (!rootNode) {
         unload();
