@@ -18,13 +18,13 @@
 #define HASHMAP_SIZE 199999
 
 // datatype for dictionary list
-typedef struct dictList {
-    struct dictList *nextNode;
+typedef struct dictBucket {
+    struct dictBucket *nextWord;
     char dictWord[];
-} dictList;
+} dictBucket;
 
-dictList *hashMap[HASHMAP_SIZE] = {};
-dictList *currNode = NULL;
+dictBucket *dictHashMap[HASHMAP_SIZE] = {};
+dictBucket *currNode = NULL;
 
 FILE *dictFile = NULL;
 unsigned dictSize = 0;
@@ -61,8 +61,8 @@ bool load(const char *dictionary)
         dictSize++;
 
         unsigned hashIndex = hash(wordBuf);
-        currNode->nextNode = hashMap[hashIndex];
-        hashMap[hashIndex] = currNode;
+        currNode->nextWord = dictHashMap[hashIndex];
+        dictHashMap[hashIndex] = currNode;
     }
 
     return true;
@@ -76,7 +76,7 @@ bool check(const char *word)
     for (int i = 0, wordLength = strlen(word); i <= wordLength; i++)
         wordBuf[i] = tolower(word[i]);
 
-    for (currNode = hashMap[hash(wordBuf)]; currNode; currNode = currNode->nextNode)
+    for (currNode = dictHashMap[hash(wordBuf)]; currNode; currNode = currNode->nextWord)
         if (!strcmp(wordBuf, currNode->dictWord))
             return true;
 
@@ -96,14 +96,14 @@ unsigned size()
  */
 bool unload()
 {
-    dictList *tempNode = NULL;
+    dictBucket *tempNode = NULL;
 
     for (int i = 0; i < HASHMAP_SIZE; i++) {
-        currNode = hashMap[i];
+        currNode = dictHashMap[i];
 
         while (currNode) {
             tempNode = currNode;
-            currNode = currNode->nextNode;
+            currNode = currNode->nextWord;
             free(tempNode);
         }
     }
