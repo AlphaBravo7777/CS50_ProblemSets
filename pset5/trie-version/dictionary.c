@@ -107,14 +107,9 @@ bool load(const char *dictionary)
 unsigned size()
 {
     unsigned dictSize = 0;
-    currNode = lastNode;
-
-    while (currNode) {
+    for (currNode = lastNode; currNode; currNode = currNode->nextLetter[PREV])
         if (currNode->isWord)
             dictSize++;
-
-        currNode = currNode->nextLetter[PREV];
-    }
 
     return dictSize;
 }
