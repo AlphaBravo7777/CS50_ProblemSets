@@ -64,8 +64,8 @@ bool load(const char *dictionary)
     if (!dictFile)
         return false;
 
-    const size_t nodePtrSize = sizeof(dictTrie);
-    rootNode = calloc(1, nodePtrSize);
+    const size_t nodeSize = sizeof(dictTrie);
+    rootNode = calloc(1, nodeSize);
     if (!rootNode) {
         unload();
         return false;
@@ -84,7 +84,7 @@ bool load(const char *dictionary)
                 a = 'z' + 1;
 
             if (!currNode->nextLetter[a - 'a']) {
-                currNode->nextLetter[a - 'a'] = calloc(1, nodePtrSize);
+                currNode->nextLetter[a - 'a'] = calloc(1, nodeSize);
                 if (!currNode->nextLetter[a - 'a']) {
                     unload();
                     return false;
@@ -107,6 +107,7 @@ bool load(const char *dictionary)
 unsigned size()
 {
     unsigned dictSize = 0;
+    
     for (currNode = lastNode; currNode; currNode = currNode->nextLetter[PREV])
         if (currNode->isWord)
             dictSize++;
