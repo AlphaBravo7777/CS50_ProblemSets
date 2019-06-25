@@ -40,7 +40,7 @@ bool check(const char *word)
 {
     currNode = rootNode;
 
-    for (int i = 0; word[i]; i++) {
+    for (unsigned i = 0; word[i]; i++) {
         char a = tolower(word[i]);
 
         if (a == '\'')
