@@ -35,7 +35,7 @@ char wordBuf[LENGTH + 2];
  */
 unsigned hash(const char *wordKey) {
     unsigned h = wordKey[0];
-    for (int i = 1; wordKey[i]; h = h * 37 + wordKey[i], i++) {}
+    for (unsigned i = 1; wordKey[i]; h = h * 37 + wordKey[i], i++) {}
     return h % HASHMAP_SIZE;
 }
 
@@ -73,7 +73,7 @@ bool load(const char *dictionary)
  */
 bool check(const char *word)
 {
-    for (int i = 0, wordLength = strlen(word); i <= wordLength; i++)
+    for (unsigned i = 0, wordLength = strlen(word); i <= wordLength; i++)
         wordBuf[i] = tolower(word[i]);
 
     for (currNode = dictHashMap[hash(wordBuf)]; currNode; currNode = currNode->nextWord)
@@ -98,7 +98,7 @@ bool unload()
 {
     dictBucket *tempNode = NULL;
 
-    for (int i = 0; i < HASHMAP_SIZE; i++) {
+    for (unsigned i = 0; i < HASHMAP_SIZE; i++) {
         currNode = dictHashMap[i];
 
         while (currNode) {
