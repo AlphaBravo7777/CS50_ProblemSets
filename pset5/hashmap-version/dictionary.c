@@ -48,7 +48,7 @@ bool load(const char *dictionary)
     if (!dictFile)
         return false;
 
-    for (const size_t nodePtrSize = sizeof(currNode); fgets(wordBuf, LENGTH + 2, dictFile); ) {
+    for (const size_t nodePtrSize = sizeof(currNode); fgets(wordBuf, LENGTH + 2, dictFile); dictSize++) {
         size_t wordBufLen = strlen(wordBuf);
         currNode = malloc(nodePtrSize + wordBufLen);
         if (!currNode) {
@@ -57,8 +57,7 @@ bool load(const char *dictionary)
         }
 
         wordBuf[wordBufLen - 1] = '\0';
-        strcpy(currNode->dictWord, wordBuf);
-        dictSize++;
+        strcpy(currNode->dictWord, wordBuf);        
 
         unsigned hashIndex = hash(wordBuf);
         currNode->nextWord = dictHashMap[hashIndex];
@@ -73,8 +72,7 @@ bool load(const char *dictionary)
  */
 bool check(const char *word)
 {
-    for (unsigned i = 0, wordLength = strlen(word); i <= wordLength; i++)
-        wordBuf[i] = tolower(word[i]);
+    for (size_t i = 0, wordLen = strlen(word); i <= wordLen; wordBuf[i] = tolower(word[i]), i++) {}
 
     for (currNode = dictHashMap[hash(wordBuf)]; currNode; currNode = currNode->nextWord)
         if (!strcmp(wordBuf, currNode->dictWord))
