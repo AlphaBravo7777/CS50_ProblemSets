@@ -75,7 +75,7 @@ bool check(const char *word)
     for (size_t i = 0, wordLen = strlen(word); i <= wordLen; wordBuf[i] = tolower(word[i]), i++) {}
 
     for (currNode = dictHashMap[hash(wordBuf)]; currNode; currNode = currNode->nextWord)
-        if (!strcmp(wordBuf, currNode->dictWord))
+        if (!strcmp(currNode->dictWord, wordBuf))
             return true;
 
     return false;
