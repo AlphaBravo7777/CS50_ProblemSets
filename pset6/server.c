@@ -607,16 +607,6 @@ const char *lookup(const char *path)
  */
 bool parse(const char *line, char *abs_path, char *query)
 {
-    unsigned spacecounter = 0;
-    for (int i = 0; line[i]; i++)
-        if (line[i] == ' ')
-            spacecounter++;
-
-    if (spacecounter != 2) {
-        error(501);
-        return false;
-    }
-
     if (strncmp("GET ", line, 4)) {
         error(405);
         return false;
@@ -628,13 +618,13 @@ bool parse(const char *line, char *abs_path, char *query)
     }
 
     strcpy(abs_path, strchr(line, ' ') + 1);
-    *strchr(abs_path, ' ') = '\0';
+    *strrchr(abs_path, ' ') = '\0';
 
-    if (abs_path[0] != '/') {
+    if (abs_path[0] != '/' || strchr(abs_path, ' ')) {
         error(501);
         return false;
     }
-    
+
     if (strchr(abs_path, '"')) {
         error(400);
         return false;
