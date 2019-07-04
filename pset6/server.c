@@ -620,12 +620,12 @@ bool parse(const char *line, char *abs_path, char *query)
     strcpy(abs_path, strchr(line, ' ') + 1);
     *strrchr(abs_path, ' ') = '\0';
 
-    if (abs_path[0] != '/' || strchr(abs_path, ' ')) {
+    if (abs_path[0] != '/') {
         error(501);
         return false;
     }
 
-    if (strchr(abs_path, '"')) {
+    if (strchr(abs_path, ' ') || strchr(abs_path, '"')) {
         error(400);
         return false;
     }
