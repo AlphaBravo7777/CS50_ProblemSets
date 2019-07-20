@@ -29,9 +29,7 @@ int main()
             if (jpgFile)
                 fclose(jpgFile);
 
-            sprintf(jpgName, "%03d.jpg", jpgID);
-            jpgID++;
-
+            sprintf(jpgName, "%03d.jpg", jpgID++);
             jpgFile = fopen(jpgName, "w");
             if (!jpgFile) {
                 printf("Could not create \"%s\".\n", jpgName);
